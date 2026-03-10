@@ -1,0 +1,17 @@
+{
+  "root": "~/projets",
+  "projects": [
+    {
+      "name": "mon-app",
+      "required": ["index.js", "package.json", "README.md"]
+    },
+    {
+      "name": "api-backend",
+      "required": ["server.js", "package.json"]
+    },
+    {
+      "name": "portfolio",
+      "required": ["index.html", "style.css"]
+    }
+  ]
+}
