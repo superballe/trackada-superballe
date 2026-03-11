@@ -1,3 +1,3 @@
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/h3htlUWE)
 
-Vérifie si des projets listés dans track.json existent sur ta machine
+Script qui vérifie si mes projets Ada sont bien installés. J'importe les fonctions de fs, path et os dont j'ai besoin. Avec JSON.parse je lis le track.json. Je remplace le ~ par le vrai chemin de la machine avec homedir. Ensuite j'ai une boucle for qui parcourt tous les projets. Pour chaque projet je vérifie si le dossier existe avec existsSync et join, si le .git est là, et si les fichiers requis sont bien présents. J'affiche un ✅ si tout est bon, sinon un ❌ avec les erreurs. Et à la fin Math.round pour arrondir le pourcentage
