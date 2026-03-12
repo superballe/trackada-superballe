@@ -13,7 +13,7 @@ if (existsSync(ada)) {
 } else {
     console.log("❌ dossier ada");
 }
-console.log();
+// console.log() supprimé ici, le saut de ligne est géré via "\n" dans les messages suivants
 
 let ok = 0;
 
@@ -32,11 +32,11 @@ for (const projet of track.projects) {
         }
     }
 
-    if (dossierExiste && gitExiste && manquants.length == 0) {
+    if (dossierExiste && gitExiste && manquants.length === 0) {
         ok++;
-        console.log("✅ dossier du projet " + projet.name);
+        console.log("\n✅ dossier du projet " + projet.name);
     } else {
-        console.log("❌ dossier du projet " + projet.name);
+        console.log("\n❌ dossier du projet " + projet.name);
 
         if (!dossierExiste) {
             console.log("- le dossier n'existe pas ou n'est pas nommé correctement");
@@ -46,28 +46,19 @@ for (const projet of track.projects) {
             }
 
             // affichage des fichiers manquants
-            if (manquants.length == 1) {
-                console.log("- il manque " + manquants[0]);
-            }
-            if (manquants.length == 2) {
-                console.log("- il manque " + manquants[0] + " et " + manquants[1]);
-            }
-            if (manquants.length > 2) {
-                let liste = manquants.slice(0, manquants.length - 1).join(", ");
-                console.log("- il manque " + liste + " et " + manquants[manquants.length - 1]);
+            if (manquants.length > 0) {
+                const liste = manquants.slice(0, -1).join(", ");
+                const dernier = manquants[manquants.length - 1];
+                const msg = manquants.length === 1 ? dernier : liste + " et " + dernier;
+                console.log("- il manque " + msg);
             }
         }
     }
-
-    console.log();
 }
 
 // affichage du pourcentage
 const total = track.projects.length;
 const pourcentage = Math.round(ok / total * 100);
+const symbole = ok === total ? "✅" : "❌";
 
-if (ok == total) {
-    console.log("✅ " + pourcentage + "% des projets sont initialisés correctement (" + ok + "/" + total + ")");
-} else {
-    console.log("❌ " + pourcentage + "% des projets sont initialisés correctement (" + ok + "/" + total + ")");
-}
+console.log("\n" + symbole + " " + pourcentage + "% des projets sont initialisés correctement (" + ok + "/" + total + ")");
