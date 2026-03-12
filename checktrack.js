@@ -59,6 +59,6 @@ for (const projet of track.projects) {
 // affichage du pourcentage
 const total = track.projects.length;
 const pourcentage = Math.round(ok / total * 100);
-const symbole = ok === total ? "✅" : "❌";
+const symbole = ok === total ? "✅" : "❌"; // La ternaire symbole évite la duplication du console.log de fin
 
 console.log("\n" + symbole + " " + pourcentage + "% des projets sont initialisés correctement (" + ok + "/" + total + ")");
